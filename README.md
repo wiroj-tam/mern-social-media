@@ -36,3 +36,10 @@ Starting client, new terminal and change directory to the project folder and the
 Starting server, new terminal and change directory to the project folder and then:
 - cd server
 - npm start
+
+## Update 2023/Jun/11
+- Add Theme Color Settings (users can customize their color theme)
+![image](https://github.com/wiroj-tam/mern-social-media/assets/134731702/1cfe4d47-03f6-47ff-bea4-e2ec0688be5b)
+![image](https://github.com/wiroj-tam/mern-social-media/assets/134731702/75e7e36e-a040-4942-a298-6713b4637989)
+
+
