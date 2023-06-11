@@ -16,7 +16,7 @@ For all related questions and discussions about this project, check out the disc
   
     PORT = (PORT you want, in this code it's 3001)
       
-    JWT_SECRET = '(Your secret key. Type whatever you want)'
+    JWT_SECRET = '(Your secret key. in this code it's ` somesuperhardstringtoguess ` )'
 
 then save the file.
 
