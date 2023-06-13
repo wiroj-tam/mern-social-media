@@ -24,6 +24,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setMode, setLogout } from "state";
 import { useNavigate } from "react-router-dom";
 import FlexBetween from "components/FlexBetween";
+import ColorModal from "components/Modal/ColorModal";
 
 const Navbar = () => {
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
@@ -33,11 +34,19 @@ const Navbar = () => {
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
 
   const theme = useTheme();
-  const neutralLight = theme.palette.neutral.light;
-  const dark = theme.palette.neutral.dark;
-  const background = theme.palette.background.default;
-  const primaryLight = theme.palette.primary.light;
-  const alt = theme.palette.background.alt;
+  // const neutralLight = theme.palette.neutral.light;
+  // const dark = theme.palette.neutral.dark;
+  // const background = theme.palette.background.default;
+  // const primaryLight = theme.palette.primary.light;
+  // const alt = theme.palette.background.alt;
+
+  {/* Color */}
+  const neutralLight = useSelector((state) => state.colorTheme.neutral.light);
+  const dark = useSelector((state) => state.colorTheme.neutral.dark);
+  const background = useSelector((state) => state.colorTheme.background.default);
+  const primaryLight = useSelector((state) => state.colorTheme.primary.light);
+  const primaryMain = useSelector((state) => state.colorTheme.primary.main);
+  const alt = useSelector((state) => state.colorTheme.background.alt);
 
   const fullName = `${user.firstName} ${user.lastName}`;
 
@@ -47,7 +56,7 @@ const Navbar = () => {
         <Typography
           fontWeight="bold"
           fontSize="clamp(1rem, 2rem, 2.25rem)"
-          color="primary"
+          color={primaryMain}
           onClick={() => navigate("/home")}
           sx={{
             "&:hover": {
@@ -76,6 +85,7 @@ const Navbar = () => {
       {/* DESKTOP NAV */}
       {isNonMobileScreens ? (
         <FlexBetween gap="2rem">
+          < ColorModal />
           <IconButton onClick={() => dispatch(setMode())}>
             {theme.palette.mode === "dark" ? (
               <DarkMode sx={{ fontSize: "25px" }} />
