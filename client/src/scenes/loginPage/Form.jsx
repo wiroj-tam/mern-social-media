@@ -11,7 +11,7 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLogin } from "state";
 import Dropzone from "react-dropzone";
 import FlexBetween from "components/FlexBetween";
@@ -54,6 +54,13 @@ const Form = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
+
+  {/* Color */}
+  const neutralMedium = useSelector((state) => state.colorTheme.neutral.medium);
+  const backgroundAlt = useSelector((state) => state.colorTheme.background.Alt);
+  const primaryLight = useSelector((state) => state.colorTheme.primary.light);
+  const primaryMain = useSelector((state) => state.colorTheme.primary.main);
+
 
   const register = async (values, onSubmitProps) => {
     // this allows us to send form info with image
@@ -175,7 +182,7 @@ const Form = () => {
                 />
                 <Box
                   gridColumn="span 4"
-                  border={`1px solid ${palette.neutral.medium}`}
+                  border={`1px solid ${neutralMedium}`}
                   borderRadius="5px"
                   p="1rem"
                 >
@@ -189,7 +196,7 @@ const Form = () => {
                     {({ getRootProps, getInputProps }) => (
                       <Box
                         {...getRootProps()}
-                        border={`2px dashed ${palette.primary.main}`}
+                        border={`2px dashed ${primaryMain}`}
                         p="1rem"
                         sx={{ "&:hover": { cursor: "pointer" } }}
                       >
@@ -240,9 +247,9 @@ const Form = () => {
               sx={{
                 m: "2rem 0",
                 p: "1rem",
-                backgroundColor: palette.primary.main,
-                color: palette.background.alt,
-                "&:hover": { color: palette.primary.main },
+                backgroundColor: primaryMain,
+                color: backgroundAlt,
+                "&:hover": { color: primaryMain },
               }}
             >
               {isLogin ? "LOGIN" : "REGISTER"}
@@ -254,10 +261,10 @@ const Form = () => {
               }}
               sx={{
                 textDecoration: "underline",
-                color: palette.primary.main,
+                color: primaryMain,
                 "&:hover": {
                   cursor: "pointer",
-                  color: palette.primary.light,
+                  color: primaryLight,
                 },
               }}
             >
